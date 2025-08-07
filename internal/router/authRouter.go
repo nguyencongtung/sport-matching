@@ -9,24 +9,24 @@ import (
 )
 
 // SetupRoutes setup router api
-func SetupRoutes2(app *fiber.App) {
+func SetupRoutes(app *fiber.App) {
 	// Middleware
-	api := app.Group("/api2", logger.New())
-	api.Get("/2", handler.Hello)
+	api := app.Group("/api", logger.New())
+	api.Get("/", handler.Hello)
 
 	// Auth
-	auth := api.Group("/auth2")
-	auth.Post("/login2", handler.Login)
+	auth := api.Group("/auth")
+	auth.Post("/login", handler.Login)
 
 	// User
-	user := api.Group("/user2")
+	user := api.Group("/user")
 	user.Get("/:id", handler.GetUser)
 	user.Post("/", handler.CreateUser)
 	user.Patch("/:id", middleware.Protected(), handler.UpdateUser)
 	user.Delete("/:id", middleware.Protected(), handler.DeleteUser)
 
 	// Product
-	product := api.Group("/product2")
+	product := api.Group("/product")
 	product.Get("/", handler.GetAllProducts)
 	product.Get("/:id", handler.GetProduct)
 	product.Post("/", middleware.Protected(), handler.CreateProduct)
