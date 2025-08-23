@@ -35,6 +35,7 @@ func ConnectDB() error {
 	}
 
 	log.Println("Database Migrated: Users, Products tables created")
+
 	// Run migrations
 	err = DB.AutoMigrate(&model.User{}, &model.Product{})
 	if err != nil {
