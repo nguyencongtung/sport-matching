@@ -1,0 +1,48 @@
+{"time":"2025-08-24T03:23:02.9667029+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:04.5896388+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.5020041+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:06.5035906+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:06.5112438+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.5119089+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.5132093+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.514428+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.5160339+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.5182802+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.5182802+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.5205828+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:23:06.8347373+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.8347373+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.8347373+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.8772243+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.8772243+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.912706+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:06.9386987+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:07.0439516+07:00","level":"INFO","msg":"Database Migrated: Users, Products tables created"}
+{"time":"2025-08-24T03:23:09.1299506+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.1304717+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.1666732+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.1666732+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.1676706+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.1676706+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.232477+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.232477+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.2330097+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.2330097+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.3347456+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.3352768+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.4223232+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.4228398+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:09.4634094+07:00","level":"INFO","msg":"Database Migrated"}
+{"time":"2025-08-24T03:23:09.4634094+07:00","level":"INFO","msg":"Server is listening on port 3000"}
+{"time":"2025-08-24T03:23:19.0794509+07:00","level":"INFO","msg":"Client registered in room: %s\n","!BADKEY":"1"}
+{"time":"2025-08-24T03:23:19.0794509+07:00","level":"INFO","msg":"New client connected to room: %s\n","!BADKEY":"1"}
+{"time":"2025-08-24T03:23:20.1702454+07:00","level":"INFO","msg":"Message received in room %s: %v\n","1":{"chat":"chat1"}}
+{"time":"2025-08-24T03:29:05.6194826+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3681335+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3698142+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3709908+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3739592+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3749859+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3794879+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3794879+07:00","level":"INFO","msg":"Starting the application"}
+{"time":"2025-08-24T03:29:08.3822756+07:00","level":"INFO","msg":"Starting the application"}
