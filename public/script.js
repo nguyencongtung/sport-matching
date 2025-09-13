@@ -72,4 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.textContent = text;
         messageElement.className = `message ${type}`;
     }
+
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    window.location.href = '/login.html';
+                } else {
+                    alert('Logout failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An unexpected error occurred during logout');
+            }
+        });
+    }
 });

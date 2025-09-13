@@ -12,26 +12,12 @@
         <p>You are logged in.</p>
         <button id="logoutButton">Logout</button>
     </div>
-    <script>
-        document.getElementById('logoutButton').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/api/auth/logout', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                if (response.ok) {
-                    window.location.href = '/login.html';
-                } else {
-                    alert('Logout failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An unexpected error occurred during logout');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
+<footer class="navbar">
+    <button class="nav-button" onclick="location.href='matching-friend.html'">Matching Friend</button>
+    <button class="nav-button" onclick="location.href='find-match.html'">Find a Match</button>
+    <button class="nav-button" onclick="location.href='chat.html'">Chat</button>
+    <button class="nav-button" onclick="location.href='my-profile.html'">My Profile</button>
+</footer>
 </html>
