@@ -1,0 +1,22 @@
+How to Integrate into Your Project:
+
+Clone the repo: git clone https://github.com/bytesfield/golang-gin-auth-service.git into a subfolder of your sport-matching repo (e.g., /auth).
+Install dependencies: Run go mod tidy in the auth folder to pull in Gin, JWT (github.com/golang-jwt/jwt), and database drivers like GORM.
+Configure your database: Update the .env file with DB credentials (e.g., for MySQL: DB_HOST=localhost, DB_USER=root, etc.).
+Adapt the handlers: The repo has ready-made endpoints like /register, /login, and /reset-password. You can extend the User model to include sport-specific fields (e.g., skill_level, preferred_sports: []string).
+Wire it into your main app: Import the auth module and mount the routes in your main router, e.g.:
+goimport (
+    "github.com/bytesfield/golang-gin-auth-service/handlers"
+    "github.com/gin-gonic/gin"
+)
+
+func main() {
+    r := gin.Default()
+    authGroup := r.Group("/auth")
+    authGroup.POST("/register", handlers.Register)
+    authGroup.POST("/login", handlers.Login)
+    // Add your sport-matching routes here, protected by JWT middleware
+    r.Run(":8080")
+}
+
+Test it: Run go run main.go and use tools like Postman to register a test user. For production, add middleware to protect routes like event creation.
