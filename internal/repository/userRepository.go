@@ -12,6 +12,7 @@ type UserRepository interface {
 	CreateUser(user *model.User) error
 	GetUserByEmail(email string) (*model.User, error)
 	GetUserByID(id uint) (*model.User, error)
+	UpdateUser(user *model.User) error
 }
 
 type userRepository struct {
@@ -41,6 +42,14 @@ func (r *userRepository) GetUserByEmail(email string) (*model.User, error) {
 		return nil, fmt.Errorf("failed to get user by email: %w", err)
 	}
 	return &user, nil
+}
+
+// UpdateUser updates an existing user in the database
+func (r *userRepository) UpdateUser(user *model.User) error {
+	if err := r.db.Save(user).Error; err != nil {
+		return fmt.Errorf("failed to update user: %w", err)
+	}
+	return nil
 }
 
 // GetUserByID retrieves a user by their ID

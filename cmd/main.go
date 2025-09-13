@@ -41,6 +41,21 @@ func main() {
 	r.GET("/dashboard.html", func(c *gin.Context) {
 		c.File("./public/dashboard.html")
 	})
+	r.GET("/welcome.html", func(c *gin.Context) {
+		c.File("./public/welcome.html")
+	})
+	r.GET("/profile-setup-name.html", func(c *gin.Context) {
+		c.File("./public/profile-setup-name.html")
+	})
+	r.GET("/profile-setup-details.html", func(c *gin.Context) {
+		c.File("./public/profile-setup-details.html")
+	})
+	r.GET("/profile-setup-distance.html", func(c *gin.Context) {
+		c.File("./public/profile-setup-distance.html")
+	})
+	r.GET("/profile-setup-pictures.html", func(c *gin.Context) {
+		c.File("./public/profile-setup-pictures.html")
+	})
 
 	// Redirect root to register page
 	r.GET("/", func(c *gin.Context) {
@@ -52,10 +67,11 @@ func main() {
 
 	// Initialize handlers
 	authHandler := handler.NewAuthHandler(userRepo)
+	userHandler := handler.NewUserHandler(userRepo)
 
 	// Setup API routes
 	api := r.Group("/api")
-	router.AuthRoutes(api, authHandler)
+	router.AuthRoutes(api, authHandler, userHandler)
 
 	// Start the server
 	if err := r.Run(":3000"); err != nil {

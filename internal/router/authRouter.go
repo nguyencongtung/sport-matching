@@ -8,7 +8,7 @@ import (
 )
 
 // AuthRoutes sets up authentication routes
-func AuthRoutes(router *gin.RouterGroup, authHandler *handler.AuthHandler) {
+func AuthRoutes(router *gin.RouterGroup, authHandler *handler.AuthHandler, userHandler *handler.UserHandler) {
 	auth := router.Group("/auth")
 	{
 		auth.POST("/register", authHandler.Register)
@@ -16,6 +16,11 @@ func AuthRoutes(router *gin.RouterGroup, authHandler *handler.AuthHandler) {
 		auth.POST("/logout", authHandler.Logout)
 
 		// Protected routes
-		auth.GET("/me", middleware.AuthMiddleware(), authHandler.GetCurrentUser)
+		protected := auth.Group("/")
+		protected.Use(middleware.AuthMiddleware())
+		{
+			protected.GET("/me", authHandler.GetCurrentUser)
+			protected.PUT("/profile", userHandler.UpdateUserProfile) // New route for profile setup
+		}
 	}
 }
