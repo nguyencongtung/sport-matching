@@ -10,7 +10,52 @@
     <div class="container">
         <h2>My Profile</h2>
         <p>View and edit your profile information.</p>
-        <!-- My profile content will go here -->
+        <form id="profileForm">
+            <label for="names">Name:</label>
+            <input type="text" id="names" name="names" required><br><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+            </select><br><br>
+
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth"><br><br>
+
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" maxlength="500"></textarea><br><br>
+
+            <label for="interests">Interests (comma-separated):</label>
+            <input type="text" id="interests" name="interests"><br><br>
+
+            <label for="looking_for">Looking For:</label>
+            <select id="looking_for" name="looking_for">
+                <option value="">Select Option</option>
+                <option value="Friendship">Friendship</option>
+                <option value="Long-term Relationship">Long-term Relationship</option>
+                <option value="Casual Dating">Casual Dating</option>
+                <option value="Something Fun">Something Fun</option>
+            </select><br><br>
+
+            <div id="profile-pictures-container">
+                <label>Profile Pictures (up to 6):</label><br>
+                <div class="picture-frames">
+                    <!-- Picture frames will be dynamically added here by JavaScript -->
+                </div>
+            </div>
+            <br>
+
+            <label for="location">Location (City, State):</label>
+            <input type="text" id="location" name="location"><br><br>
+
+            <label for="distance_preference">Distance Preference (km):</label>
+            <input type="number" id="distance_preference" name="distance_preference" min="0"><br><br>
+
+            <button type="submit">Save Profile</button>
+        </form>
         <button onclick="location.href='dashboard.html'">Back to Dashboard</button>
     </div>
     <script src="script.js"></script>

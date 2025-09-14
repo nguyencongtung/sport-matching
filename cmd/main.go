@@ -41,6 +41,9 @@ func main() {
 	r.GET("/dashboard.html", func(c *gin.Context) {
 		c.File("./public/dashboard.html")
 	})
+	r.GET("/my-profile.html", func(c *gin.Context) {
+		c.File("./public/my-profile.html")
+	})
 
 	// Redirect root to register page
 	r.GET("/", func(c *gin.Context) {
@@ -56,6 +59,7 @@ func main() {
 	// Setup API routes
 	api := r.Group("/api")
 	router.AuthRoutes(api, authHandler)
+	router.UserRoutes(api) // Add user routes
 
 	// Start the server
 	if err := r.Run(":3000"); err != nil {

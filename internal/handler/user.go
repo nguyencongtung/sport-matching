@@ -28,14 +28,8 @@ func GetUser(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"user": user})
 }
 
-// CreateUser creates a new user (this functionality is now handled by AuthHandler.Register)
-// This function is kept as a placeholder or for other non-auth related user creation if needed.
-func CreateUser(c *gin.Context) {
-	c.JSON(http.StatusNotImplemented, gin.H{"message": "User creation is handled by /api/auth/register"})
-}
-
-// UpdateUser updates a user's information
-func UpdateUser(c *gin.Context) {
+// UpdateUserProfile updates a user's profile information
+func UpdateUserProfile(c *gin.Context) {
 	id := c.Param("id")
 	userID, err := strconv.ParseUint(id, 10, 32)
 	if err != nil {
@@ -50,13 +44,36 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	if err := c.ShouldBindJSON(&user); err != nil {
+	// Bind only the profile-related fields
+	var profileUpdate struct {
+		Names             string `json:"names"`
+		Gender            string `json:"gender"`
+		DateOfBirth       string `json:"date_of_birth"`
+		Bio               string `json:"bio"`
+		Interests         string `json:"interests"`
+		LookingFor        string `json:"looking_for"`
+		ProfilePictureURLs model.StringArray `json:"profile_picture_urls"` // Changed to StringArray
+		Location          string `json:"location"`
+		DistancePreference int    `json:"distance_preference"`
+	}
+
+	if err := c.ShouldBindJSON(&profileUpdate); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
+	user.Names = profileUpdate.Names
+	user.Gender = profileUpdate.Gender
+	user.DateOfBirth = profileUpdate.DateOfBirth
+	user.Bio = profileUpdate.Bio
+	user.Interests = profileUpdate.Interests
+	user.LookingFor = profileUpdate.LookingFor
+	user.ProfilePictureURLs = profileUpdate.ProfilePictureURLs // Changed to ProfilePictureURLs
+	user.Location = profileUpdate.Location
+	user.DistancePreference = profileUpdate.DistancePreference
+
 	db.Save(&user)
-	c.JSON(http.StatusOK, gin.H{"message": "User updated successfully", "user": user})
+	c.JSON(http.StatusOK, gin.H{"message": "User profile updated successfully", "user": user})
 }
 
 // DeleteUser deletes a user
