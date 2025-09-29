@@ -8,7 +8,7 @@ import (
 
 	config "app/configs"
 	"app/internal/database"
-	"app/internal/model"
+	models "app/internal/models"
 
 	"gorm.io/gorm"
 
@@ -24,10 +24,10 @@ func CheckPasswordHash(password, hash string) bool {
 	return err == nil
 }
 
-func getUserByEmail(e string) (*model.User, error) {
+func getUserByEmail(e string) (*models.User, error) {
 	db := database.DB
-	var user model.User
-	if err := db.Where(&model.User{Email: e}).First(&user).Error; err != nil {
+	var user models.User
+	if err := db.Where(&models.User{Email: e}).First(&user).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, nil
 		}
@@ -36,10 +36,10 @@ func getUserByEmail(e string) (*model.User, error) {
 	return &user, nil
 }
 
-func getUserByUsername(u string) (*model.User, error) {
+func getUserByUsername(u string) (*models.User, error) {
 	db := database.DB
-	var user model.User
-	if err := db.Where(&model.User{Username: u}).First(&user).Error; err != nil {
+	var user models.User
+	if err := db.Where(&models.User{Username: u}).First(&user).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, nil
 		}
@@ -74,19 +74,19 @@ func Login(c *fiber.Ctx) error {
 
 	identity := input.Identity
 	pass := input.Password
-	userModel, err := new(model.User), *new(error)
+	usermodels, err := new(models.User), *new(error)
 
 	if valid(identity) {
-		userModel, err = getUserByEmail(identity)
+		usermodels, err = getUserByEmail(identity)
 	} else {
-		userModel, err = getUserByUsername(identity)
+		usermodels, err = getUserByUsername(identity)
 	}
 
 	const dummyHash = "$2a$10$7zFqzDbD3RrlkMTczbXG9OWZ0FLOXjIxXzSZ.QZxkVXjXcx7QZQiC" // => Hashed " "
 
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"status": "error", "message": "Internal Server Error", "data": err})
-	} else if userModel == nil {
+	} else if usermodels == nil {
 
 		// Always perform a hash check, even if the user doesn't exist, to prevent timing attacks
 		CheckPasswordHash(pass, dummyHash)
@@ -94,10 +94,10 @@ func Login(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"status": "error", "message": "Invalid identity or password", "data": err})
 	} else {
 		ud = UserData{
-			ID:       userModel.ID,
-			Username: userModel.Username,
-			Email:    userModel.Email,
-			Password: userModel.Password,
+			ID:       usermodels.ID,
+			Username: usermodels.Username,
+			Email:    usermodels.Email,
+			Password: usermodels.Password,
 		}
 	}
 

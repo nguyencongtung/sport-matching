@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	"app/internal/database"
-	"app/internal/model"
+	model "app/internal/models"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"

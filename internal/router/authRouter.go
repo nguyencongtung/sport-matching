@@ -6,6 +6,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/websocket/v2"
 )
 
 // SetupRoutes setup router api
@@ -31,5 +32,8 @@ func SetupRoutes(app *fiber.App) {
 	product.Get("/:id", handler.GetProduct)
 	product.Post("/", middleware.Protected(), handler.CreateProduct)
 	product.Delete("/:id", middleware.Protected(), handler.DeleteProduct)
+
+	ws := api.Group("/chat")
+	ws.Get("/ws", middleware.Protected(), handler.ChatHandler, websocket.New(handler.WebSocketHandler))
 
 }

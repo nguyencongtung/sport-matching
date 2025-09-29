@@ -1,35 +1,32 @@
 package main
 
 import (
-	"log"
-
 	"app/configs"
 	"app/internal/database"
-	"app/internal/handler"
 	"app/internal/router"
+	"log/slog"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/websocket/v2"
-	// "github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
-	// Initialize configuration and logging
-	configs.InitializeConfig()
+	// Initialize global logger
+	configs.LoggerInit("auth_server3.log", slog.LevelDebug)
 
 	app := fiber.New(fiber.Config{
-		Prefork:       true,
+		Prefork:       false,
 		CaseSensitive: true,
 		StrictRouting: true,
 		ServerHeader:  "Fiber",
 		AppName:       "App Name",
 	})
 
-	database.ConnectDB()
-	app.Get("/ws", handler.ChatHandler, websocket.New(handler.WebSocketHandler))
+	//database.ConnectDB()
+	database.ConnectMongoDB()
 
 	router.SetupRoutes(app)
 
 	// Log server startup
-	log.Fatal(app.Listen(":3000"))
+	slog.Info(app.Listen(":3000").Error())
+
 }

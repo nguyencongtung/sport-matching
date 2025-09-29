@@ -2,7 +2,7 @@ package handler
 
 import (
 	"app/internal/database"
-	"app/internal/model"
+	model "app/internal/models"
 
 	"github.com/gofiber/fiber/v2"
 )
