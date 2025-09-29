@@ -6,7 +6,6 @@ import (
 	"strconv"
 
 	config "app/configs"
-	"app/internal/model"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -36,11 +35,6 @@ func ConnectDB() error {
 
 	log.Println("Database Migrated: Users, Products tables created")
 
-	// Run migrations
-	err = DB.AutoMigrate(&model.User{}, &model.Product{})
-	if err != nil {
-		return fmt.Errorf("failed to migrate database: %w", err)
-	}
 	log.Println("Database Migrated")
 	return nil
 }
